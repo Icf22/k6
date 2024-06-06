@@ -1,5 +1,5 @@
 import http from 'k6/http';
-import { check} from 'k6';
+import { check } from 'k6';
 
 export const options = {
   stages: [
@@ -15,5 +15,9 @@ export const options = {
 
 export default function () {
   const res = http.get('https://test-api.k6.io/public/crocodiles/1/');
-  check(res, { 'status was 200': (r) => r.status == 200 });
+  console.log(res.status);
+  //console.log(res.body);
+  check(res, {
+    'status was 200': (r) => r.status == 200
+  });
 }
